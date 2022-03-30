@@ -1,8 +1,6 @@
 from django.shortcuts import render, reverse, redirect
 from django.views import View
-from django.db.models.signals import post_save
-from django.dispatch import receiver
-from django.core.mail import mail_managers, EmailMultiAlternatives
+from django.core.mail import EmailMultiAlternatives
 from datetime import datetime
 from django.template.loader import render_to_string  # импортируем функцию, которая срендерит наш html в текст
 from .models import Appointment
@@ -40,12 +38,3 @@ class AppointmentView(View):
         return redirect('appointments:make_appointment')
 
 
-def notify_managers_appointment(sender, instance, created, **kwargs):
-    subject = f'{instance.client_name} {instance.date.strftime("%d %m %Y")}'
-
-    mail_managers(
-        subject=subject,
-        message=instance.message,
-    )
-
-post_save.connect(notify_managers_appointment, sender=Appointment)
