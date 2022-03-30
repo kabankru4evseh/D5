@@ -41,10 +41,13 @@ INSTALLED_APPS = [
     'sign',
     'protect',
     'allauth',
+    'appointment',
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
 ]
+
+DEFAULT_FROM_EMAIL = 'EMAIL_HOST_USER@yandex.ru'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -77,7 +80,14 @@ TEMPLATES = [
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+
 ]
+
+ACCOUNT_EMAIL_VRIFICATION = 'mandatory'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_AUTHENTIFICATION_METHOD = 'email'
+
 
 LOGIN_URL = '/accounts/login/'
 
@@ -131,6 +141,13 @@ USE_I18N = True
 USE_TZ = True
 
 
+EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_PORT = 465
+EMAIL_HOST_USER = 'ya.kaban-kru4e-vseh'
+EMAIL_HOST_PASSWORD = 'GjxnfGfhjkm86'
+EMAIL_USE_SSL = True
+
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
@@ -141,7 +158,7 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-ACCOUNT_EMAIL_REQUIRED = True
+
 ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
