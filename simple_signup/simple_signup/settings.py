@@ -41,10 +41,12 @@ INSTALLED_APPS = [
     'sign',
     'protect',
     'allauth',
-    'appointment',
+    'appointment.apps.AppointmentConfig',
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
+    'django_apscheduler',
+
 ]
 
 DEFAULT_FROM_EMAIL = 'EMAIL_HOST_USER@yandex.ru'
@@ -144,7 +146,7 @@ USE_TZ = True
 EMAIL_HOST = 'smtp.yandex.ru'
 EMAIL_PORT = 465
 EMAIL_HOST_USER = 'ya.kaban-kru4e-vseh'
-EMAIL_HOST_PASSWORD = 'GjxnfGfhjkm86'
+EMAIL_HOST_PASSWORD = '-------'
 EMAIL_USE_SSL = True
 
 
@@ -163,3 +165,7 @@ ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_VERIFICATION = 'none'
+
+
+APSCHEDULER_DATETIME_FORMAT = "N j, Y, f:s a"
+APSCHEDULER_RUN_NOW_TIMEOUT = 25
