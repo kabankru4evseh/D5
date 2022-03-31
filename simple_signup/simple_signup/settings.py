@@ -146,7 +146,7 @@ USE_TZ = True
 EMAIL_HOST = 'smtp.yandex.ru'
 EMAIL_PORT = 465
 EMAIL_HOST_USER = 'ya.kaban-kru4e-vseh'
-EMAIL_HOST_PASSWORD = '-------'
+EMAIL_HOST_PASSWORD = 'Niska*y'
 EMAIL_USE_SSL = True
 
 
